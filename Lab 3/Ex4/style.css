@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.col-30percent {
+    float: left;
+    width: 30%;
+}
+
+.col-70percent {
+    float: left;
+    width: 70%;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.center {
+    text-align: center !important;
+    padding-left: 0 !important; 
+    padding-right: 0 !important; 
+}
+
+.clear {
+    clear: both;
+}
+
+.input-section {
+    background-color: whitesmoke;
+    height: 420px;
+    margin: 30px 20% 0;
+    border: 2px solid black;
+}
+
+.input-heading {
+    text-align: center;
+    line-height: 100px;
+    font-size: 50px;
+}
+
+.input-box {
+    margin: 10px 5% 0;
+    height: 65px;
+}
+
+.input-text {
+    line-height: 70px;
+    display: inline;
+    padding-left: 25px;
+    font-size: 25px;
+}
+
+.input-input {
+    font-size: 20px;
+    line-height: 40px;
+    margin: 14px 0;
+}
+
+.btn {
+    font-size: 25px;
+    text-align: center;
+    width: 30%;
+    height: 50px;
+    line-height: 50px;
+    margin: 20px 35%;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.btn:hover {
+    opacity: 0.6;
+}
+
+.show-section {
+    background-color: azure;
+    min-height: 100px;
+    margin: 30px 20% 0;
+    border: 2px solid black;
+}
+
+.show-text {
+    padding: 40px 30% 40px 30%;
+    line-height: 30px;
+    font-size: 25px;
+}
