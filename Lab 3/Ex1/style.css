@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.third-col {
+    float: left;
+    width: 33.33%;
+}
+
+.clear {
+    clear: both;
+}
+
+.btn-section {
+    background-color: antiquewhite;
+    height: 100px;
+    margin: 70px 20% 0;
+}
+
+.btn-box {
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+    font-size: 30px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.text-section {
+    margin: 70px 10% 0;
+    background-color: aliceblue;
+}
+
+.text-content {
+    color: black;
+    font-size: 20px;
+    line-height: 1.6;
+    padding: 30px;
+}
