@@ -1,0 +1,91 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.clear {
+    clear: both;
+}
+
+.hidden {
+    display: none;
+}
+
+.section {
+    width: 1000px;
+    min-height: 300px;
+}
+
+.box-third {
+    float: left;
+    width: 33.33%;
+}
+
+.box-half {
+    float: left;
+    width: 50%;
+}
+
+.box-40percent {
+    float: left;
+    width: 40%;
+}
+
+.box-full {
+    float: left;
+    width: 100%;
+    margin-left: 15%;
+}
+
+.detail {
+    background-color: antiquewhite;
+}
+
+.section-heading {
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-size: 30px;
+}
+
+.detail-box {
+    margin-top: 15px;
+}
+
+.line-heading {
+    font-size: 25px;
+    padding-left: 220px;
+    line-height: 33px;
+}
+
+.input-name {
+    font-size: 25px;
+    width: 80%;
+}
+
+select {
+    font-size: 25px;
+}
+
+.btn {
+    padding: 10px;
+    font-size: 25px;
+}
+
+.submit {
+    float: right;
+    margin-right: 10px;
+}
+
+.reset {
+    float: left;
+    margin-left: 10px;
+}
+
+.show {
+    background-color: lightblue;
+    font-size: 25px;
+    padding-top: 50px;
+    padding-left: 100px;
+}
