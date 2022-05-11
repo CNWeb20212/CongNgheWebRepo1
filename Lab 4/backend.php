@@ -1,6 +1,6 @@
 <?php
     $table_name = "Products";
-    $db = connectDB("localhost", "root", "", "firstdb");
+    $db = connectDB("localhost", "root", "", "test");
 
     if (!$db){
 //        echo "Failed to connect db <br/>";
