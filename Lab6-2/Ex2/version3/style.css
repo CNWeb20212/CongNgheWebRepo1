@@ -1,0 +1,108 @@
+
+body{
+	margin: 0px;
+	padding: 0px;
+//	font-family: Georgia, "Times New Roman", Times, serif;
+	color: purple;
+}
+
+#header{
+	display: flex;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	padding: 16px;
+	align-items: center;
+}
+
+#content{
+	display: flex;
+	width: 80%;
+	float: left;
+	justify-content: center;
+	font-size: 16px;
+}
+
+#sidebar{
+	width: 20%;
+	background-color: yellow;
+	float: right;
+}
+
+#footer{
+	display: flex;
+	width: 100%;
+	background-color: blue;
+	padding: 20px;
+	color: white;
+}
+
+#header .icon{
+	height: 50px;
+	width: 50px;
+	margin-left: 90px;
+	display: inline-block;
+}
+
+#content .post{
+	width: 80%;
+	background-color: pink;
+	margin: 16px;
+	border-radius: 8px;
+	display: flex;
+	box-sizing: border-box;
+	flex-direction: column;
+}
+
+#content .post .info{
+	margin: 16px 16px 16px 40px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.avatar{
+	display: inline-block;
+	height: 50px;
+	border-radius: 90%;
+}
+
+.name{
+	display: inline-block;
+	margin-left: 16px;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.Image{
+	margin-left: 40px;
+	margin-bottom: 40px;
+	width: 90%;
+}
+
+.image{
+	width: 100%;
+	border-radius: 16px;
+}
+
+#content .post .para{
+	width: 90%;
+	margin-left: 40px;
+	margin-right: 40px;
+}
+
+#header h1{
+	display: inline-block;
+	margin: 0px;
+	color: #54C7EC;
+	margin-left: 12px;
+	line-height: 100%;
+}
+
+.tool{
+	width: 100%;
+	font-size: 20px;
+	padding: 12px;
+	
+}
+
