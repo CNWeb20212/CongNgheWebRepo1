@@ -100,7 +100,7 @@
 		margin: 0px 0px 24px 0px;
 	}
 	.submit-button .dangnhap{
-		width: 40%;
+		width: max(40%, 120px);
 		border: none;
 		border-radius: 8px;
 		background-color: #b00418;
