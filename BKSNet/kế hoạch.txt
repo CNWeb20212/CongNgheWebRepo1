@@ -1,0 +1,73 @@
+
+- Usecase hệ thống:
+	+ logoutController
+	+ loginController
+	+ settingController
+	+ registerController
+	+ forgotPasswordController
+- Usecase MXH:
+	+ profileController
+	+ postController
+	+ friendController
+	+ groupController
+	+ messageController
+- Usecase học tập:
+	+ studyController
+
+
+
+- View:
+
++ Layout của web:
+	. header
+	. sidebar
+	. footer
+	. content
+============================
++ logoutController: không có
++ loginController:
+	. loginView
++ registerController:
+	. registerView
++ settingController:
+	. 
++ forgotPasswordController:
+	. inputFPView
+	. inputNewPasswordView
+============================
++ profileController:
+	. profileView
+	. editProfileView
++ postController:
+	. postFormView
+	. postListView
+	. postDetailView
++ friendController:
+	. listFriendView
+	. listUserSearchView
+	. listFriendRequestView
+	. friendProfileView
+	. userProfileView
++ groupController:
+	. listGroupSearchView
+	. particularGroupView
+	
+	. myGroupView
+	. listMyGroupView
+	. groupFormView
+	. editGroupView
+	. groupMembersView
+	. listGroupRequestView
+
++ messageController:
+	. sidebarMessageView
+	. detailMessageView
+	. messageFormView
+==========================
++ studyController:
+	. scoreTableView
+	. scheduleTableView
+	. subjectTableView
+
+
+
