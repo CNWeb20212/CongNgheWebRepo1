@@ -6,6 +6,7 @@
 	<title> BKSNet | Login </title>
 	<style type="text/css">
 		body{
+			font-family: sans-serif;
 			margin: 0;
 			width: max(100%, 600px);
 		}
@@ -18,7 +19,7 @@
 			justify-content: space-between;
 			align-items: center;
 			margin: 0;
-			background-image: url("../../img/header-background.jpg");
+			background-image: url("/BKSNet/img/header-background.jpg");
 			background-size: 100% 100%;
 			font-size: 14px;
 		}
@@ -57,7 +58,7 @@
 <body>
 	<div class = "header">
 		<div class="left">
-			<img src="../../img/logoBachKhoa.png">
+			<img src="/BKSNet/img/logoBachKhoa.png">
 			<h1>BKSNet</h1>
 		</div>
 		<div class="right">
