@@ -1,15 +1,12 @@
 
 - Usecase hệ thống:
-	+ logoutController
-	+ loginController
+	+ loginController (login, logout, register, forgotpassword)
 	+ settingController
-	+ registerController
-	+ forgotPasswordController
 - Usecase MXH:
-	+ profileController
-	+ postController
-	+ friendController
-	+ groupController
+	+ profileController (view, edit)
+	+ postController (post, view list, view detail)
+	+ friendController (view list friend, search user, response friend request, view other's profile)
+	+ groupController ()
 	+ messageController
 - Usecase học tập:
 	+ studyController
@@ -24,16 +21,14 @@
 	. footer
 	. content
 ============================
-+ logoutController: không có
 + loginController:
 	. loginView
-+ registerController:
 	. registerView
-+ settingController:
-	. 
-+ forgotPasswordController:
 	. inputFPView
 	. inputNewPasswordView
++ settingController:
+	. 
+	
 ============================
 + profileController:
 	. profileView
@@ -71,3 +66,71 @@
 
 
 
+
+- URL: BKSNet/controllerName/action/params...
++ logoutController: không có
+												url = 'BKSNet/logincontroller/logout/'
++ loginController:
+	. loginView, 								url = 'BKSNet/logincontroller/login/'
++ registerController:
+	. registerView, 							url = 'BKSNet/logincontroller/register/'
++ settingController:
+	. 				, 							url = 'BKSNet/settingcontroller/setting'
++ forgotPasswordController: 					url = 'BKSNet/logincontroller/forgotpassword'
+	. inputFPView, 								url = 'BKSNet/logincontroller/inputfp'
+	. inputNewPasswordView, 					url = 'BKSNet/logincontroller/inputnewpassword'
+============================
+// Lưu MSSV, trạng thái đăng nhập vào cookie sau khi đăng nhập thành công
+// pg hỗ trợ phân trang, đọc đến đâu
++ profileController:
+	. profileView, 								url = 'BKSNet/profilecontroller/viewme'
+	. editProfileView, 							url = 'BKSNet/profilecontroller/edit'
+	. announceView								url = 'BKSNet/profilecontroller/announce'
++ postController:
+	. postFormView, 							url = 'BKSNet/postcontroller/postcreate'
+	. postListView, 							url = 'BKSNet/postcontroller/postlist' 
+		kỹ thuật ajax auto load post khi kéo scroll đến gần hết list post hiện tại
+	. postDetailView, 							url = 'BKSNet/postcontroller/postdetail/[postid]'
++ friendController:
+	. listFriendView, 							url = 'BKSNet/friendcontroller/listfriend/[pg]'
+	. listUserSearchView, 						url = 'BKSNet/friendcontroller/searchuser/[key]'
+	. listFriendRequestView, 					url = 'BKSNet/friendcontroller/listrequest/[pg]'
+	. friendProfileView, 						url = 'BKSNet/friendcontroller/viewfriend/[mssv]'
+	. userProfileView, 							url = 'BKSNet/friendcontroller/viewuser/[mssv]'
++ groupController:
+	. listGroupSearchView, 						url = 'BKSNet/groupcontroller/searchgroup/[key]'
+	. particularGroupView, 						url = 'BKSNet/groupcontroller/groupdetail/[groupid]'
+	
+	. myGroupView, 								url = 'BKSNet/groupcontroller/mygroupdetail/[groupid]'
+	. listMyGroupView, 							url = 'BKSNet/groupcontroller/listgroup'
+	. groupFormView, 							url = 'BKSNet/groupcontroller/creategroup'
+	. editGroupView, 							url = 'BKSNet/groupcontroller/editgroup/[pg]'
+	. groupMembersView, 						url = 'BKSNet/groupcontroller/listmember/[groupid]'
+	. listGroupRequestView, 					url = 'BKSNet/groupcontroller/listrequest/[groupid]'
+
++ messageController: , 							url = 'BKSNet/messagecontroller/'
+	. sidebarMessageView
+	. detailMessageView, 						url = 'BKSNet/messagecontroller/view/[messageid]'
+	. messageFormView, 							url = 'BKSNet/messagecontroller/creatmessage'
+==========================
++ studyController:
+	. menuStudyView								url = 'BKSNet/studycontroller/choose'
+	. scoreTableView, 							url = 'BKSNet/studycontroller/viewscore'
+	. scheduleTableView, 						url = 'BKSNet/studycontroller/viewtimetable'
+	. subjectTableView, 						url = 'BKSNet/studycontroller/viewsubject'
+
+
+
+
+Cấu trúc folder ảo (dùng cho url):
+/BKSNet
+|_/controller1
+|	|_/action1
+|	|	|_/param1
+|	|		|_/param2
+|	|_/action2
+|
+|_/controller2
+|
+.
+.
