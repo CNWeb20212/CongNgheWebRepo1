@@ -190,7 +190,7 @@
 						refreshCode();
 					</script>
 					<div class="reload"> 
-						<img src="../../img/reload.png" onclick="refreshCode();">
+						<img src="/BKSNet/img/reload.png" onclick="refreshCode();">
 					</div>
 				</div>
 				<div class="input code">
@@ -207,10 +207,10 @@
 			<!-- Forgot pass and sign up -->
 			<div class="links">
 				<div class="left">
-					<a rel="stylesheet" type="text/css" href="../controller/forgotPasswordController.php"> Quên mật khẩu </a>
+					<a rel="stylesheet" type="text/css" href="/BKSNet/logincontroller/forgotpassword"> Quên mật khẩu </a>
 				</div>
 				<div class="right">
-					<a rel="stylesheet" type="text/css" href="../controller/registerController.php"> Đăng ký </a>
+					<a rel="stylesheet" type="text/css" href="/BKSNet/logincontroller/register"> Đăng ký </a>
 				</div>
 			</div>
 		</div>
