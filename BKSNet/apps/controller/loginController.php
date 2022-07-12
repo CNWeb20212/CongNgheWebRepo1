@@ -27,7 +27,7 @@ class logincontroller{
 	public function register(){
 		include ROOT . "/apps/view/layout/loginHeader.php";
 
-		echo 'register';
+		include ROOT . "/apps/view/system/registerView.php";
 
 		include ROOT . "/apps/view/layout/LoginFooter.php";
 
