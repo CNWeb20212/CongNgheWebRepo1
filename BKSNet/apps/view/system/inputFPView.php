@@ -89,6 +89,7 @@
 		text-align: center;
 		justify-content: center;
 		color: #10c0e8;
+		margin-top: 5px;
 	}
 
 	.links{
