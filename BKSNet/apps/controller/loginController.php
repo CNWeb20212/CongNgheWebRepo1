@@ -77,8 +77,7 @@ class logincontroller{
 		include ROOT . "/apps/view/layout/loginHeader.php";
 
 		global $controller;
-		echo $controller . "<br>";
-		echo 'forgotpassword';
+		include ROOT . "/apps/view/system/inputFPView.php";
 
 		include ROOT . "/apps/view/layout/loginFooter.php";
 	}
