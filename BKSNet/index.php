@@ -9,14 +9,24 @@ $params = null;
 	
 $url = $_GET['url'] ?? null;
 
-if ($url && $url != ''){
-	include ROOT . '/lib/route.php';
+if (($url != null) | ($url == "")){
+	if ($url == ""){
+		if (isset($_COOKIE['ttk'])){
+			header('location: /BKSNet/postcontroller/postlist');
+		} else {
+			$url = '/logincontroller/login';
+			include ROOT . '/lib/route.php';	
+		}
+	} else {
+		include ROOT . '/lib/route.php';
+	}
 } else {
 	include ROOT . '/apps/view/layout/loginHeader.php';
 
 	echo 'BKSNet xin chào ' . 
 		 ' <br> Kiểm tra lại địa chỉ url theo định dạng: /BKSNet/controller/action/params...' . 
-		 ' <br> Cảm ơn';
+		 ' <br> Cảm ơn' . '<br>';
+	echo 'Địa chỉ url của bạn: ' . $url;
 
 	include ROOT . '/apps/view/layout/loginFooter.php';
 }
