@@ -98,7 +98,7 @@
 		border-radius: 8px;
 		background-color: gray;
 	}
-	.code-frame .reload{
+/*	.code-frame .reload{
 		width: 35%;
 		display: flex;
 		justify-content: center;
@@ -106,13 +106,23 @@
 	.reload img{
 		height: 35px;
 		cursor: pointer;
+	}*/
+
+	.description{
+		font-size: 10px;
+		align-items: center;
+		text-align: center;
+		justify-content: center;
+		color: #10c0e8;
+		margin-top: 5px;
+		margin-bottom: 20px;
 	}
 
 	.submit-button{
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin: 0px 0px 24px 0px;
+		margin: 0px 0px 0px 0px;
 	}
 	.submit-button .dangky{
 		width: max(40%, 120px);
@@ -124,6 +134,18 @@
 		font-size: 20px;
 		cursor: pointer;
 		padding: 12px;
+	}
+	.send-code{
+		width: max(40%, 120px);
+		border: none;
+		border-radius: 8px;
+		background-color: #b00418;
+		color: white;
+		font-family: sans-serif;
+		font-size: 15px;
+		cursor: pointer;
+		padding: 12px;
+		margin-top: 10px;
 	}
 
 	.links{
@@ -159,25 +181,11 @@
 			input.style = "font-size: 24px"; 
 		}
 	}
-	let randomCode = "";
-	function refreshCode(){
-		let y = "";
-		for (let i = 1; i <= 6; i++){
-			let x = Math.floor(Math.random() * 10);
-			y = y + x.toString();
-		}
-		let code = document.getElementById("code");
-		code.innerHTML = y;
-		randomCode = y;
+	function sendCode(){
+		
 	}
 	function checkCode(){
-		input = document.getElementById("input-code");
 		
-		if (randomCode != input.value){
-			alert("Nhập sai mã");
-		}
-		input.value = "";
-		refreshCode();
 	}
 </script>
 
@@ -204,10 +212,6 @@
 					</div>
 				</div>
 				
-				<div class="input mssv">
-					<p>Mssv</p>
-					<input id="mssv" type="number" pattern="^20\d{6}$" name="Mssv" placeholder="Mssv" title="Mã số sinh viên" required>	
-				</div>
 				<div class="input email">
 					<p>Email</p>
 					<input id="email" type="text" pattern="^(\w+)\.(\w+)(\d{6})@sis\.hust\.edu\.vn$" name="Email" placeholder="Email nhà trường" title="Hãy nhập email mà nhà trường cấp" required>
@@ -232,17 +236,13 @@
 			</div>
 
 			<!-- Input code -->
+			<div class="submit-button">
+				<input class="send-code" type="submit" name="submit" value="Gửi mã xác nhận" onclick="sendCode()">
+			</div>
+
+			<p class="description">Sau khi nhấn gửi, mã code sẽ được gửi đến email của bạn. Nếu nhận thất bại, bạn có thể nhấn gửi lại</p>
+
 			<div class="input-code">
-				<div class="code-frame">
-					<p> </p>
-					<div class="code" id="code"> rQstUv </div>
-					<script type="text/javascript">
-						refreshCode();
-					</script>
-					<div class="reload"> 
-						<img src="/BKSNet/img/reload.png" onclick="refreshCode();">
-					</div>
-				</div>
 				<div class="input code">
 					<p> Mã code </p>
 					<input id = "input-code" type="text" name="code" placeholder="Mã xác nhận" required>
