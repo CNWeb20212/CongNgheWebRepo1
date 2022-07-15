@@ -111,6 +111,16 @@
 		padding: 12px;
 	}
 
+	.announce{
+		width: 60%;
+		display: flex;
+		color: red;
+		justify-content: center;
+		align-items: center;
+		margin: 0 0 24px 0;
+		padding: 0;
+	}
+
 	.links{
 		width: 100%;
 		display: flex;
@@ -129,55 +139,21 @@
 		text-decoration: none;
 	}
 </style>
-<script type="text/javascript">
-	function inputPassKeyUp(input){
-		if (input.value.length == 0){
-			input.style = "font-size: 14px";	
-		} else {
-			input.style = "font-size: 24px"; 
-		}
-	}
-	function inputPassKeyDown(input){
-		if (input.value.length == 0){
-			input.style = "font-size: 14px";	
-		} else {
-			input.style = "font-size: 24px"; 
-		}
-	}
-	let randomCode = "";
-	function refreshCode(){
-		let y = "";
-		for (let i = 1; i <= 6; i++){
-			let x = Math.floor(Math.random() * 10);
-			y = y + x.toString();
-		}
-		let code = document.getElementById("code");
-		code.innerHTML = y;
-		randomCode = y;
-	}
-	function checkCode(){
-		input = document.getElementById("input-code");
-		if (randomCode != input.value){
-			alert("Nhập sai mã");
-		}
-		input.value = "";
-		refreshCode();
-	}
-</script>
+
 
 
 <div class="parent-frame">
 	<div class="sub-frame">
-		<div class="login-frame">
+		<form class="login-frame" method="post" action="/BKSNet/logincontroller/login" onsubmit="return submitAccount()">
 			<!-- Input account and password -->
 			<div class="input-frame">
 				<div class="input account">
 					<p> Tài khoản </p>
-					<input type="text" name="account" placeholder="Tên tài khoản" required>
+					<input type="text" name="account" placeholder="Tên tài khoản" value="<?php echo $inputacc; ?>" required>
 				</div>
 				<div class="input password">
 					<p> Mật khẩu </p>
-					<input type="password" name="password" placeholder="Mật khẩu" required onkeyup="inputPassKeyUp(this)">
+					<input type="password" name="password" placeholder="Mật khẩu" value="<?php echo $inputpass; ?>" required>
 				</div>
 			</div>
 
@@ -201,7 +177,10 @@
 
 			<!-- Submit -->
 			<div class="submit-button">
-				<input class="dangnhap" type="submit" name="submit" value="Đăng nhập" onclick="checkCode()">
+				<input class="dangnhap" type="submit" name="submit" value="Đăng nhập">
+			</div>
+			<div class="announce" id="announce">
+				<?php echo $announce; ?>
 			</div>
 
 			<!-- Forgot pass and sign up -->
@@ -213,7 +192,7 @@
 					<a rel="stylesheet" type="text/css" href="/BKSNet/logincontroller/register"> Đăng ký </a>
 				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 </div>
 
