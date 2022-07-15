@@ -165,6 +165,9 @@
 	.links *{
 		text-decoration: none;
 	}
+	.center{
+		margin-top: 10px;
+	}
 </style>
 <script type="text/javascript">
 	function inputPassKeyUp(input){
