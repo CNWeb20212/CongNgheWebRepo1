@@ -5,7 +5,7 @@ class student extends database{
 
 	public function selectAll(){
 		// $keys = array('mssv', 'ho', 'dem', 'ten', 'email', 'gender', 'dateofbirth', 'address', 'description', 'grade', 'school', 'major');
-		$query = "select * from profile, user where profile.mssv = user.ttk";
+		$query = "select * from profile right join user on profile.mssv = user.ttk";
 		try{
 			$table = $this->query($query);
 			$arr = array();
@@ -33,7 +33,7 @@ class student extends database{
 	}
 
 	public function selectByTTK($TTK){
-		$query = "select * from profile, user where user.ttk = '$TTK' and profile.mssv = user.ttk";
+		$query = "select * from profile right join user on profile.mssv = user.ttk where user.ttk = '$TTK'";
 		try{
 			$table = $this->query($query);
 			$arr = array();
