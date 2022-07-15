@@ -69,6 +69,21 @@
 		justify-content: flex-start;
 		align-items: center;
 	}
+
+	/*for gender*/
+	.input-gender{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 4px 0px;
+	}
+	label {
+	    padding-right: 10px;
+	    position: relative;
+	    margin-right: 0px;
+	    line-height: 20px;
+ 	}
+
 	.code-frame p{
 		width: 30%;
 	}
@@ -157,17 +172,8 @@
 	}
 	function checkCode(){
 		input = document.getElementById("input-code");
-		password = document.getElementById("password");
-		repassword = document.getElementById("repassword");
-		account = document.getElementById("account");
-		if(account.value == ""){
-			alert("Vui lòng nhập tên tài khoản");
-
-		} else if(password.value == ""){
-			alert("Bạn chưa nhập mật khẩu");
-		} else if(password.value != repassword.value){
-			alert("Mật khẩu nhập lại không khớp");
-		} else if (randomCode != input.value){
+		
+		if (randomCode != input.value){
 			alert("Nhập sai mã");
 		}
 		input.value = "";
@@ -179,14 +185,44 @@
 <div class="parent-frame">
 	<div class="sub-frame">
 		<div class="register-frame">
-			<!-- Input account and password -->
+			<!-- Input infomation, account and password -->
 			<div class="input-frame">
+				<div class="input lastName">
+					<p>Họ</p>
+					<input id="lastName" type="text" name="Ho" placeholder="Họ" required>	
+				</div>
+				<div class="input firstName">
+					<p>Tên</p>
+					<input id="firstName" type="text" name="Ten" placeholder="Tên" required>	
+				</div>
+				<div class="input-gender">
+					<p></p>
+					<div id="genderBtn">
+						<input name="gender" id="male" type="radio" value="Nam" /> <label for="male">Nam</label>
+						<input name="gender" id="female" type="radio" value="Nữ" /> <label for="female">Nữ</label>
+						<input name="gender" id="other" type="radio" value="Khác" /> <label for="other">Khác</label>
+					</div>
+				</div>
+				
+				<div class="input mssv">
+					<p>Mssv</p>
+					<input id="mssv" type="number" pattern="^20\d{6}$" name="Mssv" placeholder="Mssv" title="Mã số sinh viên" required>	
+				</div>
+				<div class="input email">
+					<p>Email</p>
+					<input id="email" type="text" pattern="^(\w+)\.(\w+)(\d{6})@sis\.hust\.edu\.vn$" name="Email" placeholder="Email nhà trường" title="Hãy nhập email mà nhà trường cấp" required>
+				</div>
+				<div class="input birthday">
+					<p>Ngày sinh</p>
+					<input id="birthday" type="date" name="Ngay sinh" placeholder="Ngày sinh" required>	
+				</div>
+
 				<div class="input account">
-					<p> Tài khoản </p>
+					<p>Tài khoản</p>
 					<input id="account" type="text" name="account" placeholder="Tên tài khoản" required>
 				</div>
 				<div class="input password">
-					<p> Mật khẩu </p>
+					<p>Mật khẩu</p>
 					<input id="password" type="password" name="password" placeholder="Mật khẩu" required onkeyup="inputPassKeyUp(this)">
 				</div>
 				<div class="input password">
@@ -218,7 +254,7 @@
 				<input class="dangky" type="submit" name="submit" value="Đăng ký" onclick="checkCode()">
 			</div>
 
-			<!-- Forgot pass and sign up -->
+			<!-- Turn back to login -->
 			<div class="links">
 				<div class="center">
 					<a rel="stylesheet" type="text/css" href="/BKSNet/logincontroller/login"> Đăng nhập </a>
