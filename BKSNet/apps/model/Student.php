@@ -167,6 +167,23 @@ class student extends database{
 		}
 	}
 
+	public function insertStudent($mssv){
+		$query = "insert into student value('$mssv')";
+		try{
+			return $this->query($query);
+		} catch (Exception $e){
+			echo $e->getMessage();
+		}
+	}
+
+	public function deleteStudent($mssv){
+		$query = "delete student where mssv = '$mssv'";
+		try{
+			return $this->query($query);
+		} catch (Exception $e){
+			echo $e->getMessage();
+		}
+	}
 
 }
 
