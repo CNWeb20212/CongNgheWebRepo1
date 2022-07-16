@@ -1,4 +1,4 @@
-<?php 
+<?php   
 
 class student extends database{
 	public $MSSV, $ho, $dem, $ten, $email, $gender, $dateofbirth, $address,$description, $grade, $school, $major;
@@ -11,20 +11,21 @@ class student extends database{
 			$arr = array();
 			while ($row = $table->fetch_assoc()){
 				$item = array(
-					'mssv'			=>$row['mssv'],
+					'ttk'			=>$row['ttk'],
+					'mssv'			=>$row['ttk'],
 					'ho'			=>$row['ho'],
 					'dem'			=>$row['dem'],
 					'ten'			=>$row['ten'],
 					'email'			=>$row['email'],
 					'gender'		=>$row['gender'],
-					'dateofbirth'	=>$row['dateofbirth'],
+					'dateofbirth'	=>substr(strval($row['dateofbirth']), 0, strpos($row['dateofbirth'], ' ')),
 					'address'		=>$row['address'],
-					'description'	=>$row['description'],
+					'decription'	=>$row['decription'],
 					'grade'			=>$row['grade'],
 					'school'		=>$row['school'],
 					'major'			=>$row['major']
 				);
-				array_push($arr, $row);
+				array_push($arr, $item);
 			}
 			return $arr;
 		} catch (Exception $e){
@@ -39,20 +40,21 @@ class student extends database{
 			$arr = array();
 			while ($row = $table->fetch_assoc()){
 				$item = array(
-					'mssv'			=>$row['mssv'],
+					'ttk'			=>$row['ttk'],
+					'mssv'			=>$row['ttk'],
 					'ho'			=>$row['ho'],
 					'dem'			=>$row['dem'],
 					'ten'			=>$row['ten'],
 					'email'			=>$row['email'],
 					'gender'		=>$row['gender'],
-					'dateofbirth'	=>$row['dateofbirth'],
+					'dateofbirth'	=>substr(strval($row['dateofbirth']), 0, strpos($row['dateofbirth'], ' ')),
 					'address'		=>$row['address'],
 					'decription'	=>$row['decription'],
 					'grade'			=>$row['grade'],
 					'school'		=>$row['school'],
 					'major'			=>$row['major']
 				);
-				array_push($arr, $row);
+				array_push($arr, $item);
 			}
 			return $arr;
 		} catch (Exception $e){
@@ -63,6 +65,31 @@ class student extends database{
 	public function getRow($TTK){
 		$arr = $this->selectByTTK($TTK);
 		return isset($arr[0]) ? $arr[0] : null;
+	}
+
+	public function getProfile($MSSV){
+		$query = "select * from profile where profile.mssv = '$MSSV'";
+		try{
+			$table = $this->query($query);
+			$arr = array();
+			while ($row = $table->fetch_assoc()){
+				$item = array(
+					'mssv'			=>$row['mssv'],
+					'email'			=>$row['email'],
+					'gender'		=>$row['gender'],
+					'dateofbirth'	=>substr(strval($row['dateofbirth']), 0, strpos($row['dateofbirth'], ' ')),
+					'address'		=>$row['address'],
+					'decription'	=>$row['decription'],
+					'grade'			=>$row['grade'],
+					'school'		=>$row['school'],
+					'major'			=>$row['major']
+				);
+				array_push($arr, $item);
+			}
+			return isset($arr[0]) ? $arr[0] : null;
+		} catch (Exception $e){
+			echo $e->getMessage();
+		}	
 	}
 
 	public function insertProfile($MSSV, $email, $gender, $dateofbirth, $address, $description, $grade, $school, $major){
@@ -78,7 +105,10 @@ class student extends database{
 	}
 
 	public function updateProfile($MSSV, $email, $gender, $dateofbirth, $address, $description, $grade, $school, $major){
-		$query = "update profile set email = '$email', gender = '$gender', dateofbirth = '$dateofbirth', address = '$address', description = '$description', grade = '$grade', school = '$school', major = '$major' where mssv = '$MSSV'";
+		if ($this->getProfile($MSSV) == null){
+			return $this->insertProfile($MSSV, $email, $gender, $dateofbirth, $address, $description, $grade, $school, $major);
+		}
+		$query = "update profile set email = '$email', gender = '$gender', dateofbirth = '$dateofbirth', address = '$address', decription = '$description', grade = '$grade', school = '$school', major = '$major' where mssv = '$MSSV'";
 		try{
 			$res = $this->query($query);
 			if ($res) return true;
