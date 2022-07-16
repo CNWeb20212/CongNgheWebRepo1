@@ -65,9 +65,9 @@ class account extends database{
 			// Đã tồn tại tài khoản
 			return false;
 		} else {
-			$query = "insert into account value ($TTK, $MK, $role)";
+			$query = "insert into account value ('$TTK', '$MK', '$role')";
 			try {
-				$res = $this->$query($query);
+				$res = $this->query($query);
 				if ($res){
 					return true; 
 				} else return false;
