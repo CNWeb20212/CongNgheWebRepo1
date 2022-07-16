@@ -76,14 +76,14 @@
 	.button-frame{
 		width: 100%;
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		justify-content: center;
 		align-items: center;
 	}
 	.button-frame .button{
-		margin: 64px 0 16px 0;
+		margin: 64px 16px 16px 16px;
 		height: 50px;
-		width: 300px;
+		width: 200px;
 		border: none;
 		border-radius: 16px;
 		box-sizing: border-box;
@@ -95,8 +95,15 @@
 		align-items: center;
 		cursor: pointer;
 	}
-	.button-frame #announce{
-		margin: 0 0 64px 0;
+
+	.announce-frame{
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.announce-frame #announce{
+		margin: 16px 0 64px 0;
 		color: red;
 		display: flex;
 		justify-content: center;
@@ -176,6 +183,9 @@
 	
 	<div class="button-frame">
 		<input type="submit" name="submit" class="button" value="Lưu thông tin">
+		<input type="submit" name="cancel" class="button" value="Hủy bỏ">
+	</div>
+	<div class="announce-frame">
 		<div id="announce">
 			<p>
 				<?php echo $response; ?>

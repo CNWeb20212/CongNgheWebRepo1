@@ -53,6 +53,9 @@ class profilecontroller{
 				header("location: /BKSNet/profilecontroller/viewme");
 				return;
 			}
+		} else if (isset($post['cancel'])){
+			header("location: /BKSNet/profilecontroller/viewme");
+			return;
 		}
 
 		
