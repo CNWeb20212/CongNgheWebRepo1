@@ -62,6 +62,35 @@ class student extends database{
 		}
 	}
 
+	public function getByEmail($email){
+		$query = "select * from profile right join user on profile.mssv = user.ttk where profile.email = '$email'";
+		try{
+			$table = $this->query($query);
+			$arr = array();
+			while ($row = $table->fetch_assoc()){
+				$item = array(
+					'ttk'			=>$row['ttk'],
+					'mssv'			=>$row['ttk'],
+					'ho'			=>$row['ho'],
+					'dem'			=>$row['dem'],
+					'ten'			=>$row['ten'],
+					'email'			=>$row['email'],
+					'gender'		=>$row['gender'],
+					'dateofbirth'	=>substr(strval($row['dateofbirth']), 0, strpos($row['dateofbirth'], ' ')),
+					'address'		=>$row['address'],
+					'decription'	=>$row['decription'],
+					'grade'			=>$row['grade'],
+					'school'		=>$row['school'],
+					'major'			=>$row['major']
+				);
+				array_push($arr, $item);
+			}
+			return isset($arr[0]) ? $arr[0] : null;
+		} catch (Exception $e){
+			echo $e->getMessage();
+		}	
+	}
+
 	public function getRow($TTK){
 		$arr = $this->selectByTTK($TTK);
 		return isset($arr[0]) ? $arr[0] : null;

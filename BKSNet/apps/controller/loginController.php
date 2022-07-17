@@ -93,11 +93,19 @@ class logincontroller{
 		$remk 			= isset($_POST['remk']) 		? $_POST['remk'] 		: null;
 		$email 			= isset($_POST['email']) 		? $_POST['email'] 		: null;
 		$announce = "";
-		$db = new account();
-		$acc = $db->getRow($ttk);
+		$db1 = new account();
+		$db2 = new student();
+		$acc = $db1->getRow($ttk);
+		$acc2 = $db2->getByEmail($email);
 		if ($acc){
 			$announce = "Tài khoản đã tồn tại";
 			$acc = "";
+			include ROOT . "/apps/view/layout/loginHeader.php";
+			include ROOT . "/apps/view/system/registerView.php";
+			include ROOT . "/apps/view/layout/loginFooter.php";
+		} else if ($acc2){
+			$announce = "Email đã được đăng ký";
+			$email = "";
 			include ROOT . "/apps/view/layout/loginHeader.php";
 			include ROOT . "/apps/view/system/registerView.php";
 			include ROOT . "/apps/view/layout/loginFooter.php";
@@ -129,8 +137,6 @@ class logincontroller{
 				include ROOT . "/apps/view/system/registerView.php";
 				include ROOT . "/apps/view/layout/loginFooter.php";
 			} else {
-				$db1 = new account();
-				$db2 = new student();
 				$db1->insert($ttk, $mk, 'student');
 				$db2->insertUser($ttk, $ho, $dem, $ten);
 				$db2->insertStudent($ttk);
