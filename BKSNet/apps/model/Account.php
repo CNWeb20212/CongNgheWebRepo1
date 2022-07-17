@@ -105,7 +105,7 @@ class account extends database{
 		} else {
 			$query = "update account set mk = '$MK', role = '$role' where ttk = '$TTK'";
 			try {
-				$res = $this->$query($query);
+				$res = $this->query($query);
 				if ($res){
 					return true; 
 				} else return false;
