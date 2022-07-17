@@ -84,12 +84,12 @@
 	}
 
 	.description{
-		font-size: 10px;
+		font-size: 16px;
 		align-items: center;
 		text-align: center;
 		justify-content: center;
-		color: #10c0e8;
-		margin-top: 5px;
+		color: red;
+		margin: 10px 0 20px 0;
 	}
 
 	.links{
@@ -133,29 +133,36 @@
 	}
 </script>
 
+<?php 
+function value($val){
+	echo ($val==null ? "" : " value = '$val' ");
+}
+?>
 
 <div class="parent-frame">
 	<div class="sub-frame">
-		<div class="fp-frame">
+		<form class="fp-frame" action="/BKSNet/logincontroller/forgotpassword" method="post">
 			<!-- Input email -->
 			<div class="input-frame">
 				<div class="input email">
 					<p>Email</p>
-					<input type="text" name="email" placeholder="Email của tài khoản" required>
+					<input id="email" type="text" pattern="^(\w+)\.(\w+)(\d{6})@sis\.hust\.edu\.vn$" name="email" placeholder="Email trường" title="Hãy nhập email mà nhà trường cấp" <?php value($email); ?> required>
 				</div>
 			</div>
 
 			<!-- Send code button -->
 			<div class="submit-button">
-				<input class="forgotpassword" type="submit" name="submit" value="Gửi code">
+				<input class="forgotpassword" type="submit" name="send-code" value="Gửi code">
 			</div>
 
-			<p class="description">Sau khi nhấn gửi, mã code sẽ được gửi đến email của bạn. Nếu nhận thất bại, bạn có thể nhấn gửi lại</p>
+			<p class="description">
+				<?php echo $announce; ?>
+			</p>
 
 			<!-- Verify code -->
 			<div class="input code">
 				<p> Mã code </p>
-				<input id = "input-code" type="text" name="code" placeholder="Mã xác nhận" required>
+				<input id = "input-code" type="text" name="input-code" placeholder="Mã xác nhận">
 			</div>
 
 			<div class="submit-button">
@@ -165,10 +172,9 @@
 			<!-- turn back to login -->
 			<div class="links">
 				<div class="center">
-					<a rel="stylesheet" type="text/css" href="/BKSNet/logincontroller/login">Hủy</a>
+					<a rel="stylesheet" type="text/css" href="/BKSNet/logincontroller/login">Đăng nhập</a>
 				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 </div>
-

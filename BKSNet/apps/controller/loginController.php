@@ -74,12 +74,88 @@ class logincontroller{
 	}
 
 	public function forgotpassword(){
-		include ROOT . "/apps/view/layout/loginHeader.php";
+		$announce = "";
+		$email = isset($_POST['email']) ? $_POST['email'] : null;
 
-		global $controller;
-		include ROOT . "/apps/view/system/inputFPView.php";
+		if (!isset($_COOKIE['accept-reset-password']) || $_COOKIE['accept-reset-password'] == 0){
+			if (isset($_POST['send-code'])){
+				$db = new student();
+				$acc = $db->getByEmail($email);
+				if ($acc == null){
+					$announce = "Email này chưa đăng ký tài khoản";
+					include ROOT . "/apps/view/layout/loginHeader.php";
+					include ROOT . "/apps/view/system/inputFPView.php";
+					include ROOT . "/apps/view/layout/loginFooter.php";
+				} else {
+					$code = $this->randomCode();
+					$emailer = new email();
+					$emailer->send($email, "Code for reset password", "Your code is " . $code);
+					$announce = "Đã gửi code tới email của bạn";
+					setcookie("reset-password-code", $code, time() + 300, "/");
+					include ROOT . "/apps/view/layout/loginHeader.php";
+					include ROOT . "/apps/view/system/inputFPView.php";
+					include ROOT . "/apps/view/layout/loginFooter.php";
+				}
+			} else if (isset($_POST['submit'])){
+				if (!isset($_POST['input-code']) 
+					|| !isset($_COOKIE['reset-password-code']) 
+					|| $_POST['input-code'] != $_COOKIE['reset-password-code']){
+					$announce = "Mã xác nhận không chính xác";
+					include ROOT . "/apps/view/layout/loginHeader.php";
+					include ROOT . "/apps/view/system/inputFPView.php";
+					include ROOT . "/apps/view/layout/loginFooter.php";	
+				} else {
+					setcookie("email", $email, time() + 3000, "/");
+					setcookie('accept-reset-password', 1, time() + 300, "/");
+					header("location: /BKSNet/logincontroller/forgotpassword");
+					return;
+				}
+			} else {
+				include ROOT . "/apps/view/layout/loginHeader.php";
+				include ROOT . "/apps/view/system/inputFPView.php";
+				include ROOT . "/apps/view/layout/loginFooter.php";	
+			}
+		} else {
+			if (isset($_POST['change'])){
+				$mk = $_POST['mk'];
+				$remk = $_POST['remk'];
+				if ($this->isEmpty($mk)){
+					$announce = "Mật khẩu không được rỗng";
+					include ROOT . "/apps/view/layout/loginHeader.php";
+					include ROOT . "/apps/view/system/inputNewPasswordView.php";
+					include ROOT . "/apps/view/layout/loginFooter.php";
+				} else if ($mk != $remk) {
+					$announce = "Hai mật khẩu không trùng nhau";
+					include ROOT . "/apps/view/layout/loginHeader.php";
+					include ROOT . "/apps/view/system/inputNewPasswordView.php";
+					include ROOT . "/apps/view/layout/loginFooter.php";
+				} else {
+					$db = new student();
+					$acc = $db->getByEmail($_COOKIE['email']);
+					$db2 = new account();
+					$rs = $db2->update($acc['mssv'], $mk, 'student');
+					if ($rs){
+						$announce = "Đổi mật khẩu thành công cho";
+					} else {
+						$announce = "Đổi mật khẩu thất bại cho";
+					}
+					$announce .= ($_COOKIE['email'] . "-" . $acc['mssv']);
+					setcookie("reset-password-code", 1, time() - 300, "/");
+					unset($_POST['change']);
+					setcookie("accept-reset-password", 1, time() - 300, "/");
+					include ROOT . "/apps/view/layout/loginHeader.php";
+					include ROOT . "/apps/view/system/inputFPView.php";
+					include ROOT . "/apps/view/layout/loginFooter.php";
+				}
+				echo "Changing pass";
+			} else {
+				unset($_POST['change']);
+				include ROOT . "/apps/view/layout/loginHeader.php";
+				include ROOT . "/apps/view/system/inputNewPasswordView.php";
+				include ROOT . "/apps/view/layout/loginFooter.php";
+			}
+		}
 
-		include ROOT . "/apps/view/layout/loginFooter.php";
 	}
 
 	public function register(){
