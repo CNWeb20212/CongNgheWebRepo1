@@ -122,32 +122,6 @@
 
 </style>
 
-<?php 
-global $controller;
-$ctrlarr = array('postcontroller', 'profilecontroller', 'friendcontroller', 'groupcontroller', 'messagecontroller', 'studycontroller');
-$clsname = array('home', 'announce', 'friend', 'group', 'message', 'study');
-for ($i = 0; $i < 6; $i++){
-	if ($controller == $ctrlarr[$i]){
-?>
-<style type="text/css">
-	.<?php echo $clsname[$i]; ?>{
-		background-color: lightblue;
-	}
-</style>
-<?php
-	} else {
-?>
-<style type="text/css">
-	.<?php echo $clsname[$i]; ?>{
-		background-color: gray;
-	}
-</style>
-<?php
-	}
-}
-
-?>
-
 
 <div class="sidebar-frame">
 	<div class="avatar-frame">
@@ -158,7 +132,14 @@ for ($i = 0; $i < 6; $i++){
 		</div>
 		<div class="name">
 			<a href="/BKSNet/profilecontroller/viewme">
-				<p> Trần Phúc </p>
+				<p> 
+					<?php
+						$db = new student();
+						$std = $db->getRow($_COOKIE['ttk']);
+						if ($std) echo $std['ho'] . " " . $std['ten'];
+						else echo "No name";
+					?>
+				</p>
 			</a>
 		</div>
 	</div>	
