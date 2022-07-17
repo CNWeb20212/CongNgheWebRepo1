@@ -40,11 +40,11 @@ class email{
 
         $this->mail->MsgHTML($content); 
         if(!$this->mail->Send()) {
-            echo "Error while sending Email.";
+//             echo "Error while sending Email.";
             // var_dump($this->mail);
             return false;
         } else {
-            echo "Email sent successfully";
+//             echo "Email sent successfully";
             return true;
         }
     }
