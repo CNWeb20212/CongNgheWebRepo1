@@ -50,9 +50,18 @@
 		width: 60px;
 	}
 
+	h4{
+		background-color: white;
+	}
+
+	.name{
+		margin: 0;
+	}
+
+
 </style>
 
-<a class="a-card-friend" href="/BKSNet/friendcontroller/viewfriend/<?php echo $currentfriend['ttk'] ?>">
+<a class="a-card-friend" href="/BKSNet/friendcontroller/viewusersearch/<?php echo $usersearch['ttk'] ?>">
 	<ul>
 		<li>
 			<div class="content-friend">
@@ -61,11 +70,10 @@
 				</div>
 				<div class="description">
 
-					<h3 id="name"><?php echo $currentfriend['hoten'] ?></h3>
-					<p>Bạn bè</p>
-					<p id="ttk"><?php echo $currentfriend['ttk'] ?></p>
-					<p id="school"><?php echo $currentfriend['school'] ?></p>
-					<p id="major"><?php echo $currentfriend['major'] ?></p>
+					<h4 id="name"><?php echo $usersearch['hoten'] ?></h3>
+					<p id="ttk"><?php echo $usersearch['ttk'] ?></p>
+					<p id="school"><?php echo $usersearch['school'] ?></p>
+					<p id="major"><?php echo $usersearch['major'] ?></p>
 				</div>
 			</div>
 		</li>

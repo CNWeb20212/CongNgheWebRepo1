@@ -70,16 +70,23 @@
 		margin: 64px;
 		margin-bottom: 20px;
 		height: 50px;
-		width: 300px;
+		width: 200px;
 		border-radius: 16px;
 		box-sizing: border-box;
 		font-weight: bold;
 		color: white;
-		background-color: #b00418;
+		
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
+	#addbtn{
+		background-color: #b00418;
+	}
+	#deletebtn{
+		background-color: #473d3d;
+	}
+
 	.turn-back{
 		margin-top: 0px;
 		margin-bottom: 10px;
@@ -93,7 +100,7 @@
 
 <div class="profile-frame"> 
 	<div class="title-frame">
-		<p> THÔNG TIN NGƯỜI DÙNG </p>
+		<p>NGƯỜI DÙNG NÀY ĐÃ GỬI LỜI MỜI KẾT BẠN CHO BẠN</p>
 	</div>
 	
 	<div class="separate"></div>
@@ -162,7 +169,7 @@
 			<p class="item">
 				<span class="title">Chuyên ngành:</span>
 				<span class="content">
-					<?php echo $currentuser['major'] ?>
+					<?php echo $currentuser['major'] ?>		
 				</span>
 			</p>
 		</div>
@@ -171,8 +178,12 @@
 	<div class="separate"></div>
 	
 	<div class="button-frame">
-		<form action="/BKSNet/friendcontroller/addrequest/<?php echo $ttk ?>">
-			<input class="button" type="submit" name="add-button" value="Gửi lời mời kết bạn">
+		<form action="/BKSNet/friendcontroller/addfriend/<?php echo $currentuser['mssv'] ?>">
+			<input id="addbtn" class="button" type="submit" name="add-button" value="Chấp nhận">
+		</form>
+
+		<form action="/BKSNet/friendcontroller/deleterequest/<?php echo $currentuser['mssv'] ?>">
+			<input id="deletebtn" class="button" type="submit" name="delete-button" value="Xóa">
 		</form>
 		
 	</div>

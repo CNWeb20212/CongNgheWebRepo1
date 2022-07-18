@@ -93,7 +93,7 @@
 
 <div class="profile-frame"> 
 	<div class="title-frame">
-		<p> THÔNG TIN NGƯỜI DÙNG </p>
+		<p>BẠN ĐÃ GỬI LỜI MỜI KẾT BẠN CHO NGƯỜI DÙNG NÀY</p>
 	</div>
 	
 	<div class="separate"></div>
@@ -162,7 +162,7 @@
 			<p class="item">
 				<span class="title">Chuyên ngành:</span>
 				<span class="content">
-					<?php echo $currentuser['major'] ?>
+					<?php echo $currentuser['major'] ?>		
 				</span>
 			</p>
 		</div>
@@ -171,10 +171,9 @@
 	<div class="separate"></div>
 	
 	<div class="button-frame">
-		<form action="/BKSNet/friendcontroller/addrequest/<?php echo $ttk ?>">
-			<input class="button" type="submit" name="add-button" value="Gửi lời mời kết bạn">
-		</form>
-		
+		<div>
+			<input class="button" type="submit" name="add-button" value="Đã gửi lời mời kết bạn">
+		</div>
 	</div>
 
 	<!-- turn back -->
