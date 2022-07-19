@@ -38,6 +38,14 @@ class database{
 		}
 	}
 
+	public function toArr($table){
+		$res = array();
+		while ($row = $table->fetch_assoc()){
+			array_push($res, $row);
+		}
+		return $res;
+	}
+
 }
 
 
