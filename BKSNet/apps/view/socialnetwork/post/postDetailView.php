@@ -211,16 +211,14 @@
 	let commentStyle = "word-break:break-word; padding:0;";
 	let liked = new Map();
 	<?php 
-		foreach ($postlist as $post){
-			if ($this->liked($post['postid'])){
-				?>
-					liked.set(<?php echo $post['postid']; ?>, 1);
-				<?php
-			} else {
-				?>
-					liked.set(<?php echo $post['postid']; ?>, 0);
-				<?php
-			}
+		if ($this->liked($post['postid'])){
+			?>
+				liked.set(<?php echo $post['postid']; ?>, 1);
+			<?php
+		} else {
+			?>
+				liked.set(<?php echo $post['postid']; ?>, 0);
+			<?php
 		}
 	?>
 	let ttk = "<?php echo $_COOKIE['ttk']; ?>";
