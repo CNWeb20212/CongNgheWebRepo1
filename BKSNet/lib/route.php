@@ -69,7 +69,7 @@ function autoloader($className) {
 // hàm gettime theo định dạng y/m/d h/m/s
 function gettime(){
 	$timestamp = time() + 5*3600;
-	$time = date("Y/m/d h:i:s", $timestamp);
+	$time = date("Y/m/d H:i:s", $timestamp);
 	return $time;
 }
 
